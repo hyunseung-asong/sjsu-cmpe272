@@ -7,7 +7,8 @@ viewed product tracking, user creation and search, and an admin-only user list.
 ## Features
 
 - Home, about, news, bio, contacts, and company-user pages
-- Product catalog generated from individual product pages
+- Product catalog generated from shared product data
+- JSON product API for dynamic product-list clients
 - Recently viewed products stored in a browser cookie
 - User creation with server-side validation and hashed passwords
 - User search by name, email, home phone, or cell phone
@@ -69,6 +70,7 @@ Then open <http://127.0.0.1:8000>.
 | `/`                             | Home page                |
 | `/products/products.php`        | Product catalog          |
 | `/products/recently_viewed.php` | Recently viewed products |
+| `/api/products`                 | JSON product catalog API |
 | `/user/create.php`              | Create a user            |
 | `/user/search.php`              | Search users             |
 | `/secure/login.php`             | Admin login              |

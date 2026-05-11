@@ -1,11 +1,4 @@
 <?php
-require __DIR__ . '/../_lib.php';
+require __DIR__ . '/../catalog.php';
 
-$snowboard= new Product(
-	"Snowboard",
-	"A high-quality snowboard for all your winter adventures.",
-	399.99,
-	"./snowboard.png"
-);
-
-make_product_page($snowboard);
+make_catalog_product_page('snowboard');
