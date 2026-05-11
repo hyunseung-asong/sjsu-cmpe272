@@ -24,7 +24,7 @@ function escape_html($value) {
 <body>
 	<header>
 		<a href="/term_project/todo.php">Login</a>
-		<h1>Term Project Products</h1>
+		<h1>Cross Domain Enterprise Online Market Place</h1>
 	</header>
 
 	<main>
