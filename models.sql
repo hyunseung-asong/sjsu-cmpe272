@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS product_tracking (
     clicked_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_product_tracking_user
-        FOREIGN KEY (user_id)
-        REFERENCES users (user_id)
-        ON DELETE SET NULL
+    FOREIGN KEY (user_id)
+    REFERENCES users (user_id)
+    ON DELETE SET NULL
 );
