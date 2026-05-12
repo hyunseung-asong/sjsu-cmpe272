@@ -10,13 +10,13 @@ function andrew_company_get_data() {
 
 	$decoded = json_decode($response, true);
 
-	if (!is_array($decoded) || !isset($decoded['services']) || !is_array($decoded['services'])) {
+	if (!is_array($decoded)) {
 		return andrew_company_empty_data();
 	}
 
 	return [
-		'company_name' => trim((string) ($decoded['company'] ?? 'RIFTMIND')),
-		'products' => array_values(array_filter(array_map('andrew_company_normalize_service', $decoded['services']))),
+		'company_name' => 'RIFTMIND',
+		'products' => array_values(array_filter(array_map('andrew_company_normalize_product', $decoded))),
 	];
 }
 
@@ -54,13 +54,13 @@ function andrew_company_fetch_url($url) {
 	return is_string($body) ? $body : '';
 }
 
-function andrew_company_normalize_service($service) {
-	if (!is_array($service)) {
+function andrew_company_normalize_product($product) {
+	if (!is_array($product)) {
 		return null;
 	}
 
-	$title = trim((string) ($service['title'] ?? ''));
-	$product_link = andrew_company_absolute_url(trim((string) ($service['href'] ?? '')));
+	$title = trim((string) ($product['title'] ?? ''));
+	$product_link = andrew_company_absolute_url(trim((string) ($product['product_link'] ?? '')));
 
 	if ($title === '' || $product_link === '') {
 		return null;
@@ -68,9 +68,9 @@ function andrew_company_normalize_service($service) {
 
 	return [
 		'title' => $title,
-		'description' => trim((string) ($service['short'] ?? '')),
-		'price' => is_numeric($service['price'] ?? null) ? (float) $service['price'] : null,
-		'image_link' => andrew_company_absolute_url(trim((string) ($service['image'] ?? ''))),
+		'description' => trim((string) ($product['description'] ?? '')),
+		'price' => is_numeric($product['price'] ?? null) ? (float) $product['price'] : null,
+		'image_link' => andrew_company_absolute_url(trim((string) ($product['image_link'] ?? ''))),
 		'product_link' => $product_link,
 	];
 }
